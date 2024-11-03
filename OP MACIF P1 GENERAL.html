@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcours de Souscription</title>
+    <style>
+        /* Fond noir pour le corps de la page */
+        body { font-family: Tahoma, sans-serif; background-color: black; display: flex; color: white; }
+
+        /* En-tête sticky */
+        h1 {
+            text-align: center;
+            color: white;
+            background-color: #000;
+            padding: 10px;
+            margin: 0;
+            position: sticky;
+            top: 0;
+            z-index: 10; /* Assure que l'en-tête reste au-dessus des autres éléments */
+            width: 100%;
+        }
+
+        /* Barre de progression */
+        .progress-bar-container {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 100%;
+            background-color: #f1f1f1;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #4caf50;
+            height: 0;
+            transition: height 0.3s;
+        }
+
+        /* Contenu principal */
+        .content {
+            margin-left: 40px;
+            width: calc(100% - 40px);
+            padding: 20px;
+        }
+
+        /* Style des sections avec fond blanc */
+        .section {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            background-color: white; /* Fond blanc pour les sections */
+            padding: 20px;
+            border-radius: 8px; /* Coins arrondis pour esthétique */
+        }
+        img { width: 80%; max-width: 1200px; }
+
+    </style>
+</head>
+<body>
+
+    <!-- Barre de progression -->
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="content">
+        <!-- En-tête sticky -->
+        <h1>MRH 2024 > MACIF > Persona 1</h1>
+
+        <!-- Section 1 -->
+        <div id="section1" class="section">
+            <img src="https://res.cloudinary.com/dclhc4t2q/image/upload/v1730305280/cifma01_c4j7ne.jpg" alt="Étape 1">
+        </div>
+
+        <!-- Section 2 -->
+        <div id="section2" class="section">
+            <img src="https://res.cloudinary.com/dclhc4t2q/image/upload/v1730305279/cifma02_ucj3ga.jpg" alt="Étape 2">
+        </div>
+
+        <!-- Section 3 -->
+        <div id="section3" class="section">
+            <img src="https://res.cloudinary.com/dclhc4t2q/image/upload/v1730305279/cifma03_fzluvd.jpg" alt="Étape 3">
+        </div>
+
+        <!-- Section 4 -->
+        <div id="section4" class="section">
+            <img src="https://res.cloudinary.com/dclhc4t2q/image/upload/v1730379855/cifma04_fkhxmi.jpg" alt="Étape 4">
+        </div>
+
+        <!-- Section 5 -->
+        <div id="section5" class="section">
+            <img src="https://res.cloudinary.com/dclhc4t2q/image/upload/v1730380333/cifma05_sv0ft6.jpg" alt="Étape 5">
+        </div>
+
+        <!-- Section 6 -->
+        <div id="section6" class="section">
+            <img src="https://res.cloudinary.com/dclhc4t2q/image/upload/v1730380541/cifma06_d4dtq7.jpg" alt="Étape 6">
+        </div>
+
+        <!-- Section 7 -->
+        <div id="section7" class="section">
+            <img src="https://res.cloudinary.com/dclhc4t2q/image/upload/v1730380789/cifma07_mg34c5.jpg" alt="Étape 7">
+        </div>
+
+        <!-- Section 8 -->
+        <div id="section8" class="section">
+            <img src="https://res.cloudinary.com/dclhc4t2q/image/upload/v1730381043/cifma08_mrzqfn.jpg" alt="Étape 8">
+        </div>
+
+        <!-- Section 9 -->
+        <div id="section9" class="section">
+            <img src="https://res.cloudinary.com/dclhc4t2q/image/upload/v1730381188/cifma09_uhok4z.jpg" alt="Étape 9">
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour mettre à jour la barre de progression en fonction du défilement total de la page
+        function updateProgressBar() {
+            const progressBar = document.getElementById('progress-bar');
+            const scrollTop = window.scrollY;
+            const documentHeight = document.documentElement.scrollHeight;
+            const windowHeight = window.innerHeight;
+
+            // Calcul du pourcentage de défilement
+            const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
+
+            // Mise à jour de la hauteur de la barre de progression
+            progressBar.style.height = scrollPercent + '%';
+        }
+
+        // Mettre à jour la barre de progression au défilement
+        window.addEventListener('scroll', updateProgressBar);
+
+        // Initialisation de la barre de progression
+        window.onload = function() {
+            updateProgressBar(); // Initialiser la barre de progression
+        };
+    </script>
+
+</body>
+</html>
