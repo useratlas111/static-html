@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sondage de Dates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sondage pour l'anniversaire</h1>
+    <p>Sélectionnez les dates qui vous conviennent :</p>
+    <input type="date" id="dateInput">
+    <button onclick="addDate()">Ajouter la date</button>
+    
+    <table id="datesTable">
+        <tr>
+            <th>Date</th>
+            <th>Participants</th>
+            <th>Action</th>
+        </tr>
+    </table>
+
+    <script>
+        const dates = [];
+
+        function addDate() {
+            const dateInput = document.getElementById('dateInput');
+            const dateValue = dateInput.value;
+            if (dateValue && !dates.find(date => date.date === dateValue)) {
+                dates.push({ date: dateValue, participants: [] });
+                renderTable();
+                dateInput.value = '';
+            } else {
+                alert("La date est déjà ajoutée ou invalide.");
+            }
+        }
+
+        function renderTable() {
+            const table = document.getElementById('datesTable');
+            table.innerHTML = `
+                <tr>
+                    <th>Date</th>
+                    <th>Participants</th>
+                    <th>Action</th>
+                </tr>
+            `;
+            dates.forEach((entry, index) => {
+                const row = `
+                    <tr>
+                        <td>${entry.date}</td>
+                        <td>${entry.participants.join(', ') || 'Aucun'}</td>
+                        <td><button onclick="vote(${index})">Voter</button></td>
+                    </tr>
+                `;
+                table.innerHTML += row;
+            });
+        }
+
+        function vote(index) {
+            const name = prompt("Entrez votre nom pour voter sur cette date :");
+            if (name && !dates[index].participants.includes(name)) {
+                dates[index].participants.push(name);
+                renderTable();
+            } else if (dates[index].participants.includes(name)) {
+                alert("Vous avez déjà voté pour cette date.");
+            }
+        }
+    </script>
+</body>
+</html>
