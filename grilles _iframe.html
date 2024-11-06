@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Grille avec Iframes</title>
+    <style>
+        /* Style de la grille */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+            padding: 20px;
+        }
+
+        /* Style des éléments de la grille */
+        .grid-item {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style de l'iframe */
+        iframe {
+            width: 1000px;
+            height: 1000px;
+            border: none;
+            transform: translate(-200px, -300px) scale(0.5);
+            transform-origin: top left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test de Grille avec Iframes</h1>
+    <div class="grid-container">
+        <!-- Exemple de plusieurs items dans la grille -->
+        <div class="grid-item">
+            <iframe src="https://content.useratlas.fr/bQbhUHxkMMvD.html" scrolling="no"></iframe>
+        </div>
+        <div class="grid-item">
+            <iframe src="https://content.useratlas.fr/bQbhUHxkMMvD.html" scrolling="no"></iframe>
+        </div>
+        <div class="grid-item">
+            <iframe src="https://content.useratlas.fr/bQbhUHxkMMvD.html" scrolling="no"></iframe>
+        </div>
+        <!-- Ajoutez d'autres items au besoin -->
+    </div>
+</body>
+</html>
